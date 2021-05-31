@@ -7,16 +7,16 @@
       <div v-if="!isActive" class="slider-content content-2">
       </div>
     </transition>
-    <div class="slider-navigation" @click="changeContent">
+    <div class="slider-navigation">
       <div class="slider-title">
         {{ selectedItem.title }}
       </div>
       <div class="slider-buttons">
-        <span>{{ selectedItem.order }} /2</span>
-        <button @click="changeContent('true')">
+        <span>{{ selectedItem.order }} / 2</span>
+        <button @click="changeContent('red-dead')">
           <img src="../../assets/icons/angle-left-solid.png" alt="">
         </button>
-        <button @click="changeContent('false')">
+        <button @click="changeContent('mortal-kombat')">
           <img src="../../assets/icons/angle-right-solid.png" alt="">
         </button>
       </div>
@@ -34,21 +34,33 @@ export default {
         isActive: true,
         selectedItem: {
           title: 'MORTAL KOMBAT',
-          order: '1'
+          order: '1',
+          description: 'Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.'
+        },
+        games: {
+          game1:{
+            title: 'MORTAL KOMBAT',
+            order: '1',
+            description: 'Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.' 
+          },
+          game2: {
+            title: 'RED DEAD REDEMPTION II',
+            order: '2',
+            description: 'Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.' 
+          },
         }
       }
     },
   methods: {
-    changeContent(bool) {
-
-      if (bool === 'true') {
+    changeContent(selected) {
+      if (selected === 'red-dead') {
         this.isActive = true
-        this.selectedItem.title = 'MORTAL KOMBAT';
-        this.selectedItem.order = '1';
-      } else if (bool === 'false') {
+        this.selectedItem.title = this.games.game1.title;
+        this.selectedItem.order = this.games.game1.order;
+      } else if (selected === 'mortal-kombat') {
         this.isActive = false
-        this.selectedItem.title = 'RED DEAD REDEMPTION II';
-        this.selectedItem.order = '2';
+        this.selectedItem.title = this.games.game2.title;
+        this.selectedItem.order = this.games.game2.order;
       }
     }
   }
