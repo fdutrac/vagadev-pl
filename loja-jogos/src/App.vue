@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <Carousel />
       <Header />
     <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -12,11 +13,13 @@
 
 <script>
 import Header from '@/components/Header';
+import Carousel from '@/components/Slider'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Carousel
   }
 }
 </script>
