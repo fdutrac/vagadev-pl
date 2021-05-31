@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="slider">
     <transition name="fade">
       <div v-if="isActive" class="slider-content content-1">
         <div class="slider-description game-one">
@@ -85,7 +85,6 @@ export default {
 
 </script>
 <style>
-
 h1, h2 {
   margin: 0
 }
@@ -235,7 +234,7 @@ p {
     background-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
     height: 1px;
-}   
+  }   
 }
 
 
