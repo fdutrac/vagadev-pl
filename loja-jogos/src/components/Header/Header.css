@@ -71,6 +71,7 @@ li {
     align-items: center;
     justify-content: center;
     width: clamp(40px, 15vw, 140px);
+    font-size: 14px;
 }
 ul .border {
     border-right: 2px solid white;

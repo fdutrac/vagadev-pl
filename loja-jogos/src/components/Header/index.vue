@@ -17,13 +17,13 @@
       <li class="border">
         <img class="icon" src="../../assets/icons/paper-plane.png">
         <span>
-        contato
+        CONTATO
         </span>
       </li>
       <li class="border">
         <img class="icon" src="../../assets/icons/search-solid.png">
         <span>
-        buscar
+        BUSCAR
         </span>
       </li>
       <li>
