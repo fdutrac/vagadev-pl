@@ -79,7 +79,16 @@ ul .border {
     width: 20px;
     margin-right: 10px;
 }
-@media only screen and (max-width: 800px) {
+
+/* Exibe menu  */
+
+.active {
+    display: block
+}
+
+/* Responsividade para mobile  */
+
+@media only screen and (max-width: 767px) {
     li span {
         display: none;
     }
@@ -93,8 +102,3 @@ ul .border {
         margin-right: 0px;
     }
 }
-
-
-.active {
-    display: block
-  }
