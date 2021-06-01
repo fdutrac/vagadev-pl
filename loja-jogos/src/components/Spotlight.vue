@@ -82,7 +82,7 @@ p {
 }
 
 .card {
-  max-width: 350px;
+  max-width: 300px;
   min-height: auto;
   margin: 10px;
   box-shadow: 0px 4px 20px 7px rgba(0, 0, 0, 0.07);
