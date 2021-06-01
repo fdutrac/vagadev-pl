@@ -88,6 +88,7 @@ p {
   box-shadow: 0px 4px 20px 7px rgba(0, 0, 0, 0.07);
   border-radius: 10px;
   overflow: hidden;
+  opacity: 1;
 }
 
 .card-img--container {

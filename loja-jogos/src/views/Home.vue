@@ -16,9 +16,11 @@
         <img src="../assets/icons/angle-left-solid.png" class="spotlight-nav--img" alt="">
       </div>
       <div class="spotlights-container">
-        <Spotlight class="spotlight" :class="selected === 1 ? selected : 'notSelected'" :game="spotlights[0]"/>
-        <Spotlight class="spotlight" :class="selected === 2 ? selected : 'notSelected'" :game="spotlights[1]"/>
-        <Spotlight class="spotlight" :class="selected === 3 ? selected : 'notSelected'" :game="spotlights[2]"/>
+        <!-- <transition-group name="slide"> -->
+          <Spotlight class="spotlight" :class="selected === 1 ? 'selected' : 'notSelected'" :game="spotlights[0]"/>
+          <Spotlight class="spotlight" :class="selected === 2 ? 'selected' : 'notSelected'" :game="spotlights[1]"/>
+          <Spotlight class="spotlight" :class="selected === 3 ? 'selected' : 'notSelected'" :game="spotlights[2]"/>
+        <!-- </transition-group> -->
       </div>
       <div class="spotlights-nav--right" @click="selectNext">
         <img src="../assets/icons/angle-right-solid.png" class="spotlight-nav--img" :class="selected === 3 ? 'unclickable' : ''" alt="">
@@ -165,6 +167,7 @@ h3 {
   filter: invert(100%);
   height: 25px
 }
+
 .unclickable {
   filter: invert(50%)!important;
 }
@@ -199,11 +202,19 @@ h3 {
   .spotlights-nav--left, .spotlights-nav--right {
     display: block;
   }
+
   .selected {
-    display: block
+    opacity: 1;
+    height: auto;
+    transition: 1s ease;
   }
   .notSelected {
-    display: none!important;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    transform: translateX(-100px);
+    transition: 0.5s ease;
   }
   .title-container {
     width:90%;

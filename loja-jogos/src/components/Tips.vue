@@ -28,6 +28,7 @@ export default {
   max-width: 220px;
   min-height: auto;
   margin: 10px;
+  margin-top: 25px; 
 }
 .card-sequence {
   display: flex;
