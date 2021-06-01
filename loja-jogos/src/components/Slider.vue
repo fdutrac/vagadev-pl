@@ -29,10 +29,10 @@
         </div>
         <div class="slider-button--container">
           <button @click="changeContent('red-dead')">
-            <img src="../../assets/icons/angle-left-solid.png" alt="">
+            <img src="../assets/icons/angle-left-solid.png" alt="">
           </button>
           <button @click="changeContent('mortal-kombat')">
-            <img src="../../assets/icons/angle-right-solid.png" alt="">
+            <img src="../assets/icons/angle-right-solid.png" alt="">
           </button>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 h1, h2 {
   margin: 0
 }
@@ -158,13 +158,13 @@ p {
 .content-1 {
   transition: 0.5s;
   /* transition: all 0.3s linear; */
-  background-image: url('../../assets/carousel/principal_banner_desktop 1.png');
+  background-image: url('../assets/carousel/principal_banner_desktop 1.png');
   background-size:cover;
 }
 .content-2 {
   transition: 0.5s;
   /* transition: all 0.3s linear; */
-  background-image: url('../../assets/carousel/principal_banner_desktop_02.png');
+  background-image: url('../assets/carousel/principal_banner_desktop_02.png');
   background-size: cover;
 }
 

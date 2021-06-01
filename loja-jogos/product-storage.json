@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Outriders",
+        "value": "200,00",
+        "img": "product-outriders.png",
+        "bought": true
+    },
+    {
+        "title": "CYBERPUNK 2077",
+        "value": "200,00",
+        "img": "product-cyberpunk2077.png",
+        "bought": false
+    },
+    {
+        "title": "Donkey Kong Countru Tropical Freeze ",
+        "value": "200,00",
+        "img": "product-donkey-kong-country-tropical-freeze.png",
+        "bought": false
+    }
+]

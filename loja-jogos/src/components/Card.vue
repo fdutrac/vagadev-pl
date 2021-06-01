@@ -25,24 +25,14 @@ export default {
       title: ''
     },
   },
-  components: {  },
-  data() {
-    return { 
-      
-      }
-    },
-  methods: {
-   
-  }
 }
 
 </script>
-<style>
+<style scoped>
 .card-title--container {
   padding: 0px 10px;
   display: flex;
   width: 100%;
-  /* flex-wrap: wrap; */
   align-items: center;
   justify-content: space-between;
   color: #084154;
