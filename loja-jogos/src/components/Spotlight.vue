@@ -1,23 +1,23 @@
 <template>
-   <div class="card">
-     <div class="card-img--container">
-       <img :src="`products/${game.img}`" class="card-img" alt=""/>
-     </div>
-     <div class="card-description">
-        <p class="card-title">
-          {{ game.title }}
-        </p>
-        <p class="card-value">
-          R$ {{ game.value }}
-        </p>
-        <div class="card-button--container">
-          <button class="card-button" :class="{bought: game.bought}">
-            {{ game.bought ? 'COMPRADO!' : 'COMPRAR' }}
-          </button>
-          <img v-if="game.bought" src="../assets/icons/bought.png" class="bought-img" alt="">
-        </div>
-     </div>
-   </div>
+  <div class="card">
+    <div class="card-img--container">
+      <img :src="`products/${game.img}`" class="card-img" alt=""/>
+    </div>
+    <div class="card-description">
+      <p class="card-title">
+        {{ game.title }}
+      </p>
+      <p class="card-value">
+        R$ {{ game.value }}
+      </p>
+      <div class="card-button--container">
+        <button class="card-button" :class="{bought: bought ? 'bought' : ''}" @click="isBought">
+          {{ bought ? 'COMPRADO!' : 'COMPRAR' }}
+        </button>
+        <img v-if="bought" src="../assets/icons/bought.png" class="bought-img" alt="">
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -29,9 +29,22 @@ export default {
       img: '',
       title: '',
       value: '',
-      bought: '',
     },
   },
+   data() {
+    return {
+      bought: false
+
+   }
+  }, 
+  methods: {
+    isBought() {
+      if(this.bought === false) {
+        this.$emit('gamebought', this.game);
+        return this.bought = true;
+      }
+    },
+  }
 }
 
 </script>
@@ -41,7 +54,7 @@ p {
 }
 
 .card-button--container {
-  position: relative
+  position: relative;
 }
 
 .card-button {
@@ -105,7 +118,7 @@ p {
 .bought {
   background-color: #084154;
   justify-content: start;
-  padding-left: 30px;
+  padding-left: 20px;
 }
 
 .bought-img {

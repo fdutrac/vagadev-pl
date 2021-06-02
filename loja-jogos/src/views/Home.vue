@@ -16,11 +16,7 @@
         <img src="../assets/icons/angle-left-solid.png" class="spotlight-nav--img" alt="">
       </div>
       <div class="spotlights-container">
-        <!-- <transition-group name="slide"> -->
-          <Spotlight class="spotlight" :class="selected === 1 ? 'selected' : 'notSelected'" :game="spotlights[0]"/>
-          <Spotlight class="spotlight" :class="selected === 2 ? 'selected' : 'notSelected'" :game="spotlights[1]"/>
-          <Spotlight class="spotlight" :class="selected === 3 ? 'selected' : 'notSelected'" :game="spotlights[2]"/>
-        <!-- </transition-group> -->
+        <Spotlight @gamebought="openLightbox" v-for="(spotlight, index) in spotlights" :key="index" class="spotlight" :class="selector(index+1)" :game="spotlights[index]"/>
       </div>
       <div class="spotlights-nav--right" @click="selectNext">
         <img src="../assets/icons/angle-right-solid.png" class="spotlight-nav--img" :class="selected === 3 ? 'unclickable' : ''" alt="">
@@ -43,8 +39,8 @@
         <Tips v-for="(tip, index) in tips.list" :key="tip.id" :game="tip" :sequence="index+1"/>
       </div>
     </section>
+    <Lightbox @closelightbox="closeLightbox" :class="{lightboxActive: isActive}" />
   </div>
-  
 </template>
 
 <script>
@@ -52,6 +48,7 @@
 import Slider from '@/components/Slider.vue';
 import Card from '@/components/Card.vue';
 import Spotlight from '@/components/Spotlight.vue';
+import Lightbox from '@/components/Lightbox.vue';
 import Tips from '@/components/Tips.vue';
 import products from '../../product-storage.json';
 import axios from 'axios';
@@ -62,11 +59,13 @@ export default {
     Slider,
     Card,
     Spotlight,
-    Tips
+    Tips,
+    Lightbox
   },
   data() {
     return {
       selected: 1,
+      isActive: false,
       games: {
         game1: {
           title: 'The Legend of Zelda - Breath of the wild',
@@ -97,6 +96,16 @@ export default {
       if (this.selected > 1) {
         this.selected--
       }
+    },
+    selector(index) {
+      return this.selected === index ?  'selected' : 'notSelected';
+    
+    },
+    openLightbox() {
+      this.isActive = true;
+    },
+    closeLightbox() {
+      this.isActive = false;
     },
     getCategory(category) {
       const options = {
@@ -190,6 +199,12 @@ h3 {
   margin-top: 15px;
 }
 
+.lightboxActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 @media only screen and (min-width: 1024px) {
   .cards-container {
@@ -211,6 +226,7 @@ h3 {
   .notSelected {
     opacity: 0;
     height: 0;
+    width: 0;
     overflow: hidden;
     margin: 0;
     transform: translateX(-100px);

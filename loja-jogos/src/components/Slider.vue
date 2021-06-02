@@ -1,21 +1,21 @@
 <template>
   <div class="slider">
-    <transition-group name="slide" type="animation">
-      <div key="1" v-if="isActive" class="slider-content content-1">
+    <transition name="slide" type="animation">
+      <div  v-if="isActive" class="slider-content content-1">
         <div class="slider-description game-one">
           <h1>{{ games.game1.title}}</h1>
           <h2>{{ games.game1.value}}</h2>
           <p>{{ games.game1.description}}</p>
         </div>
       </div> 
-      <div key="2" v-if="!isActive" class="slider-content content-2">
+      <div v-if="!isActive" class="slider-content content-2">
         <div class="slider-description game-two">
           <h1>{{ games.game2.title}}</h1>
           <h2>{{ games.game2.value}}</h2>
           <p>{{ games.game2.description}}</p>
         </div>
       </div>
-    </transition-group>
+    </transition>
     <div class="slider-navigation">
       <div class="slider-title">
         <span>
@@ -98,9 +98,7 @@ h2 {
 p {
   font-size: clamp(0.8rem, 2vw, 1rem);
 }
-.slider {
-  background-color: currentColor;
-}
+
 .slider-content{
   position:relative;
   height: max(40vw, 400px);
@@ -157,22 +155,13 @@ p {
   background-color: inherit;
 }
 
-@keyframes slide-in {
-  from {transform: translateX(-100px); opacity: 0;}
-  to {transform: translateX(0px);}
-}
-.slide-enter-active {
-  animation: slide-in 0.5s ease-out;
-}
-
-
 .content-1 {
-  /* transition: 1s; */
+  transition: 1s;
   background-image: url('../assets/carousel/principal_banner_desktop 1.png');
   background-size:cover;
 }
 .content-2 {
-  /* transition: 1s; */
+  transition: 1s;
   background-image: url('../assets/carousel/principal_banner_desktop_02.png');
   background-size: cover;
 }
@@ -195,19 +184,20 @@ p {
   .game-one {
     right: 20%;
   }
-  .game-two{
+  .game-two {
     left: 10%;
     background-color: rgba(0,0,0,0.65);
     border-radius: 10px;
     max-height: 380px;
     bottom:auto
   }
-  .slider-navigation {
+  
+  .slider-navigation { 
     height: 50px;
     display:flex;
     position: absolute;
     right: -123px;
-    top: 35%;
+    top: 33%;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
