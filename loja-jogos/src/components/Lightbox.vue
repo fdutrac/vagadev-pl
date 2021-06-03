@@ -1,5 +1,5 @@
 <template>
-  <div class="lightbox-background">
+  <div class="lightbox-background" :class="{active: isActive}" >
     <div class="lightbox-container">
       <div class="lightbox-header">
         <img src="../assets/icons/close btn.png" class="lightbox-button" @click="closeLightbox" alt="">
@@ -15,14 +15,23 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus';
 
 export default {
   name: 'Lightbox',
   props: {
   },
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  created() {
+    eventBus.$on('gamebought', () => this.isActive = true);
+  },
   methods: {
     closeLightbox(){
-      this.$emit('closelightbox');
+      this.isActive = false
     }
   }
 }
@@ -72,10 +81,18 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .lightbox-img {
   height: 80%;
   width: auto;
   margin-top: 50px;
 }
+
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 </style>

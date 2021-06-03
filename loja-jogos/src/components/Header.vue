@@ -42,26 +42,45 @@
         BUSCAR
         </span>
       </li>
-      <li>
+      <li @click="openCart">
         <img class="icon" src="../assets/icons/shopping-bag-solid.png">
+        <div class="badge">{{ counter }}</div>
       </li>
     </ul>
+    <transition name="slide">
+      <Cart class="cart" v-show="cartActive" />
+    </transition>
   </nav>
 </template>
 
 <script>
+import eventBus from '@/eventBus';
+import Cart from './Cart.vue';
+
 export default {
   name: 'Header',
   props: {
   },
+  components: {
+    Cart
+  },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      cartActive: false,
+      counter: 0
     }
+  },
+  created() {
+    eventBus.$on('gamebought', () => this.counter++);
+    eventBus.$on('closecart', () => this.cartActive = false)
   },
   methods: {
     showMenu() {
       this.isActive = !this.isActive
+    },
+    openCart() {
+      this.cartActive = true;
     },
     changeIcon() {
       if(this.isActive === false) return require('../assets/icons/icon_hamburguer.png')
@@ -74,7 +93,8 @@ export default {
 <style scoped>
 #header {
   background-color: rgba(0, 0, 0, 0);
-  width: 100%;
+  width: calc(100% - 20px);
+
   height: 80px;
   position: absolute;
   z-index: 1000;
@@ -193,8 +213,9 @@ ul .border {
     border: none
   }
   #header {
-    justify-content:space-between;
-    padding: 0px;
+    justify-content:space-between; 
+    width: 100%;
+    padding: 0
   }
   .icon {
     margin-right: 0px;
@@ -209,7 +230,6 @@ ul .border {
     height: calc(100vh + 365px);
     border: unset;
     border-radius: unset;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     overflow: hidden;
     box-shadow: unset ;

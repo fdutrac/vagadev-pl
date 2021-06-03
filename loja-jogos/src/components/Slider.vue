@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <transition name="slide" type="animation">
-      <div  v-if="isActive" class="slider-content content-1">
+      <div v-if="isActive" class="slider-content content-1">
         <div class="slider-description game-one">
           <h1>{{ games.game1.title}}</h1>
           <h2>{{ games.game1.value}}</h2>
@@ -196,7 +196,7 @@ p {
     height: 50px;
     display:flex;
     position: absolute;
-    right: -123px;
+    right: -122px;
     top: 33%;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);

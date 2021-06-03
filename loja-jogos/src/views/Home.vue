@@ -39,7 +39,7 @@
         <Tips v-for="(tip, index) in tips.list" :key="tip.id" :game="tip" :sequence="index+1"/>
       </div>
     </section>
-    <Lightbox @closelightbox="closeLightbox" :class="{lightboxActive: isActive}" />
+    <Lightbox />
   </div>
 </template>
 
@@ -65,7 +65,6 @@ export default {
   data() {
     return {
       selected: 1,
-      isActive: false,
       games: {
         game1: {
           title: 'The Legend of Zelda - Breath of the wild',
@@ -198,13 +197,6 @@ h3 {
   margin: auto;
   margin-top: 15px;
 }
-
-.lightboxActive {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 
 @media only screen and (min-width: 1024px) {
   .cards-container {

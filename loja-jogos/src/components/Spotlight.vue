@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus';
 
 export default {
   name: 'Spotlight',
@@ -40,7 +41,7 @@ export default {
   methods: {
     isBought() {
       if(this.bought === false) {
-        this.$emit('gamebought', this.game);
+        eventBus.$emit('gamebought', this.game);
         return this.bought = true;
       }
     },
