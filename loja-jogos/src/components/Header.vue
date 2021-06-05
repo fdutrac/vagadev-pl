@@ -197,6 +197,19 @@ ul .border {
   transition: 0.2s;
 }
 
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background-color: #3EC6E0;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  color: white
+}
+
 /* Exibe menu  */
 
 .active {
