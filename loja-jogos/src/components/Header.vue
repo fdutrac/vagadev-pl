@@ -47,7 +47,7 @@
         <div class="badge">{{ counter }}</div>
       </li>
     </ul>
-    <transition name="slide">
+    <transition name="slide-fade">
       <Cart class="cart" v-show="cartActive" />
     </transition>
   </nav>
@@ -68,7 +68,7 @@ export default {
     return {
       isActive: false,
       cartActive: false,
-      counter: 0
+      counter: 0,
     }
   },
   created() {
@@ -85,12 +85,13 @@ export default {
     changeIcon() {
       if(this.isActive === false) return require('../assets/icons/icon_hamburguer.png')
       return require('../assets/icons/close icon.png')
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
+
 #header {
   background-color: rgba(0, 0, 0, 0);
   width: calc(100% - 20px);
@@ -104,13 +105,16 @@ export default {
   padding: 0px 10px;
   justify-content:space-around;
 }
+
 a {
   text-decoration: none;
 }
+
 .brand {
   display: flex;
   align-items: center;
 }
+
 .brand .logo {
   width: 100px;
 }
@@ -141,7 +145,7 @@ a {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   overflow: hidden;
-  box-shadow: 6px 6px 0px #3EC6E0 ;
+  box-shadow: 6px 6px 0px #3EC6E0;
 }
 
 .dropdown-section {
@@ -158,11 +162,11 @@ a {
   color: #fff;
   font-size: 14px;
 }
+
 .dropdown-title {
   font-size: 16px;
   font-weight: bold;
 }
-
 
 .dropdown-item:hover {
   background-color: #3EC6E0;
@@ -184,9 +188,11 @@ li {
   width: clamp(40px, 15vw, 140px);
   font-size: 14px;
 }
+
 ul .border {
   border-right: 2px solid white;
 }
+
 .icon {
   width: 20px;
   margin-right: 10px;
@@ -210,8 +216,20 @@ ul .border {
   color: white
 }
 
-/* Exibe menu  */
+/* Animações de carrinho */
 
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(400px);
+  opacity: 0;
+}
+
+/* Exibe menu  */
 .active {
   display:flex;
 }
@@ -239,24 +257,32 @@ ul .border {
   }
 
   .dropdown-content {
-    width: 100%;
-    height: calc(100vh + 365px);
+    width: calc(100% - 40px);
+    min-height: calc(100vh - 50px);
     border: unset;
     border-radius: unset;
     z-index: 1;
     overflow: hidden;
     box-shadow: unset ;
+    flex-wrap: wrap;
+    min-width: unset;
+  }
+
+  .dropdown-section:not(:last-child) {
+    border-bottom: 1px solid #062C38;
+
   }
 
   .dropdown-section {
-    display: flex;
-    flex-direction: column;
-    flex: 1
+    display:flex;
+    justify-content: center;
+    text-align: left;
+    min-width: 100%;
   }
 
   .dropdown-item, .dropdown-title {
-    display: inline-block;
-    width: 70%;
+    display: block;
+    width: calc(100% - 32px);
     border-radius: 5px;
     padding: 8px 16px;
     color: #fff;

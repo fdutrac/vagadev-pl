@@ -1,60 +1,63 @@
 <template>
-  <div id="cart">
-    <div class="cart-header" >
-      <button class="close-btn" @click="hideCart">
-        <img class="icon" src="../assets/icons/close icon.png">
+  <div class="cart-container">
+    <div id="cart">
+      <div class="cart-header" >
+        <button class="close-btn" @click="hideCart">
+          <img class="icon" src="../assets/icons/close icon.png">
+        </button>
+        <h1 class="cart-title">Carrinho</h1>
+        <div class="cart-icon">
+          <img class="icon" src="../assets/icons/shopping-bag-solid.png">
+          <div class="bagde">{{ gamesLenght }}</div>
+        </div>
+      </div>
+      <div class="cart-body">
+        <div class="empty" v-if="games.length === 0">
+          Você ainda não adicionou nada aqui :(
+        </div>
+        <div v-for="game in games" :key="game.title" class="cart-item">
+          <div class="cart-img--container">
+            <img :src="`products/${game.img}`" class="cart-item--img" alt="">
+          </div>
+          <div>
+            <p class="cart-item--title">{{game.title}}</p>
+            <p class="cart-item--value">R$ {{game.value}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="cart-footer">
+        <p>CALCULAR FRETE</p>
+        <div class="cart-input">
+          <input v-model="zipcode" @keydown="filterEntry($event)" type="text" maxlength="8" placeholder="Digite seu cep">
+          <button class="cart-button" @click="searchAddress">CALCULAR</button>
+        </div>
+        <div class="cart-address--container" v-if="address.street">
+          <img src="../assets/icons/location.png" class="icon" alt="">
+          <div>
+            <p class="address-text">{{ address.street + ', ' + address.neighborhood }}</p>
+            <p class="address-text">{{ address.city + ', ' + address.state }}</p>
+            <p><strong>FRETE GRÁTIS</strong></p>
+          </div>
+        </div>
+      </div>
+      <div v-if="games.length > 0" class="cart-calc">
+        <p>
+          TOTAL: <strong>{{ calcTotal }}</strong>
+        </p>
+        <p>
+          OU: <strong>12X</strong> de <strong>{{ calcInstallments }}</strong>
+        </p>
+      </div>
+      <button class="cart-button">
+        FINALIZAR PEDIDO
       </button>
-      <h1 class="cart-title">Carrinho</h1>
-      <div class="cart-icon">
-        <img class="icon" src="../assets/icons/shopping-bag-solid.png">
-        <div class="bagde">{{ gamesLenght }}</div>
-      </div>
-
     </div>
-    <div class="cart-body">
-      <div class="empty" v-if="games.length === 0">
-        Você ainda não adicionou nada aqui :(
-      </div>
-      <div v-for="game in games" :key="game.title" class="cart-item">
-        <div class="cart-img--container">
-          <img :src="`products/${game.img}`" class="cart-item--img" alt="">
-        </div>
-        <div>
-          <p class="cart-item--title">{{game.title}}</p>
-          <p class="cart-item--value">R$ {{game.value}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="cart-footer">
-      <p>CALCULAR CEP</p>
-      <div class="cart-input">
-        <input type="text" placeholder="Digite seu cep">
-        <button class="cart-button">CALCULAR</button>
-      </div>
-      <div class="cart-address--container">
-        <img src="../assets/icons/location.png" class="icon" alt="">
-        <div>
-          <p>endereço</p>
-          <p><strong>FRETE GRÁTIS</strong></p>
-        </div>
-      </div>
-    </div>
-    <div v-if="games.length > 0" class="cart-calc">
-      <p>
-        TOTAL: <strong>{{ calcTotal }}</strong>
-      </p>
-      <p>
-        OU: <strong>12X</strong> de <strong>{{ calcInstallments }}</strong>
-      </p>
-    </div>
-    <button class="cart-button">
-      FINALIZAR PEDIDO
-    </button>
   </div>
 </template>
 
 <script>
 import eventBus from '@/eventBus';
+import axios from 'axios';
 
 export default {
   name: 'Cart',
@@ -64,7 +67,13 @@ export default {
     return {
       isActive: false,
       games: [],
-      address: ''
+      zipcode: '',
+      address: {
+        street: '',
+        neighborhood: '',
+        city: '',
+        state: '',
+      }
     }
   },
   computed: {
@@ -103,6 +112,36 @@ export default {
   methods: {
     hideCart() {
       eventBus.$emit('closecart')
+    },
+    viacepURL(cep) {
+      return `https://viacep.com.br/ws/${cep}/json/`;
+    },
+    filterEntry(e) {
+      if (
+        // permite somente numeros
+        (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)
+        // permite teclas lado direito, esquerdo, delete, backspace, tab e enter
+        || /^(8|9|13|46|37|39|17)$/.test(e.keyCode)
+        // permite ctrl+ c,v,x,a,z
+        || (/^(67|86|88|65|90)$/.test(e.keyCode) && e.ctrlKey)
+      ) return;
+      e.preventDefault();
+      e.stopPropagation();
+    },
+    searchAddress() {
+      this.address.street = '';
+      this.address.neighborhood = '';
+      this.address.city = '';
+      this.address.state = '';
+
+      if (!(/^[0-9]{8}$/).test(this.zipcode)) return;
+      axios.get(this.viacepURL(this.zipcode)).then((response) => {
+        this.address.street = response.data.logradouro;
+        this.address.neighborhood = response.data.bairro;
+        this.address.city = response.data.localidade;
+        this.address.state = response.data.uf;
+      });
+      console.log('=====', this.address)
     },
   }
 }
@@ -166,19 +205,27 @@ input:focus {
   height: 100px;
 }
 
+.cart-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
 #cart {
   color:#084154;
   background-color: #ffffff;
   min-width: 350px;
   position: absolute;
-  display: block;
+  top: 0;
   right: 0;
-  top:0;
+  display: block;
   z-index: 1000;
   border-radius: 10px;
   align-items: center;
   padding: 15px;
-  ;
+  box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.363);
 }
 
 
@@ -201,7 +248,7 @@ input:focus {
 
 .close-btn {
   position: absolute;
-  left: -27px;
+  left: -28px;
   width: 25px;
   height: 25px;
   display: flex;
@@ -276,6 +323,9 @@ input:focus {
   height: 30px;
   margin-right: 10px;
 }
+.address-text {
+  font-size: 12px;
+}
 
 .icon {
   width: 20px;
@@ -291,6 +341,24 @@ input:focus {
 /* Responsividade para mobile  */
 
 @media only screen and (max-width: 767px) {
+  .cart-container {
+    background-color: rgba(8, 65, 84, 0.384);
+  }
+  #cart {
+    top: 30px;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    max-height: 87vh;
+    overflow-y:scroll;
+    overflow-x:unset;
+    max-width: 400px;
+  }
+  .close-btn {
+    position: relative;
+    margin-left: 30px;
+  }
 
 }
 </style>
