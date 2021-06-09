@@ -45,9 +45,10 @@ span {
   .footer-left {
     width: auto
   }
-  
-.footer-right {
+
+  .footer-right {
     width: 100%;
   }
 }
+
 </style>

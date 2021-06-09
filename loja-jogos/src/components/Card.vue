@@ -38,9 +38,11 @@ export default {
   color: #084154;
   font-weight: 700;
 }
+
 .card-title {
   flex: 4;
 }
+
 .card-title--container hr {
   flex: auto;
   width: 20%;
@@ -50,6 +52,7 @@ export default {
   background-color: #084154;
   height: 1px;
 }
+
 .card-description {
   height: 50px;
   display:flex;
@@ -59,6 +62,7 @@ export default {
   margin-top: -4px;
   overflow: hidden;
 }
+
 .card-description--border {
   display:flex;
   align-items: center;
@@ -67,11 +71,13 @@ export default {
   color: rgba(0, 0, 0, 0);
   width: clamp(5px, 2vw, 11px);
 }
+
 .card {
   max-width: 500px;
   min-height: auto;
   padding: 10px;
 }
+
 .img {
   max-width: 100%;
   height: auto ;

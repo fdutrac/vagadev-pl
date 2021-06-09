@@ -19,17 +19,16 @@ export default {
 }
 
 </script>
+
 <style scoped>
-
-
-
 .card {
   position:relative;
   max-width: 220px;
   min-height: auto;
   margin: 10px;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
+
 .card-sequence {
   display: flex;
   align-items: center;
@@ -58,6 +57,7 @@ export default {
     max-width: 100%;
   }
 }
+
 @media only screen and (min-width: 1367px) {
   .card {
     max-width: 300px;

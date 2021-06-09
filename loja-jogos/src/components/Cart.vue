@@ -7,7 +7,7 @@
         </button>
         <h1 class="cart-title">Carrinho</h1>
         <div class="cart-icon">
-          <img class="icon" src="../assets/icons/shopping-bag-solid.png">
+          <img class="icon" src="../assets/icons/shopping-bag-solid blue.png">
           <div class="bagde">{{ gamesLenght }}</div>
         </div>
       </div>
@@ -80,6 +80,7 @@ export default {
     gamesLenght() {
       return this.games.length;
     },
+
     calcTotal() {
       let total = 0
       this.games.forEach(game => {
@@ -91,6 +92,7 @@ export default {
       })
       return formatter.format(total)
     },
+
     calcInstallments() {
       let total = 0
       this.games.forEach(game => {
@@ -104,25 +106,29 @@ export default {
       return formatter.format(total)
     }
   },
+
   created() {
     eventBus.$on('gamebought', game => {
       this.games.push(game)
     })
   },
+
   methods: {
     hideCart() {
       eventBus.$emit('closecart')
     },
+
     viacepURL(cep) {
       return `https://viacep.com.br/ws/${cep}/json/`;
     },
+
     filterEntry(e) {
       if (
-        // permite somente numeros
+        // Permite somente numeros
         (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)
-        // permite teclas lado direito, esquerdo, delete, backspace, tab e enter
+        // Permite teclas lado direito, esquerdo, delete, backspace, tab e enter
         || /^(8|9|13|46|37|39|17)$/.test(e.keyCode)
-        // permite ctrl+ c,v,x,a,z
+        // Permite ctrl+ c,v,x,a,z
         || (/^(67|86|88|65|90)$/.test(e.keyCode) && e.ctrlKey)
       ) return;
       e.preventDefault();
@@ -165,7 +171,6 @@ input {
   padding: 0 5px;
   border: none;
   color: #084154;
-  /* width: 60% */
 }
 
 .bagde {
@@ -228,7 +233,6 @@ input:focus {
   box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.363);
 }
 
-
 .cart-header {
   position: relative;
   display: flex;
@@ -245,6 +249,9 @@ input:focus {
 .cart-icon {
   display: flex;
 }
+.cart-icon .icon {
+  margin-right: 10px;
+}
 
 .close-btn {
   position: absolute;
@@ -257,6 +264,7 @@ input:focus {
   background-color: #F55959;
   border-radius: 50%
 }
+
 .close-btn .icon {
   width: 12px;
   height: 12px;
@@ -303,7 +311,6 @@ input:focus {
 
 .cart-address--container {
   display: flex;
-  /* margin-top: 10px; */
   align-items: center;
   font-size: 12px;
   min-height: 90px;
@@ -323,6 +330,7 @@ input:focus {
   height: 30px;
   margin-right: 10px;
 }
+
 .address-text {
   font-size: 12px;
 }
@@ -337,13 +345,13 @@ input:focus {
   transition: 0.2s;
 }
 
-
 /* Responsividade para mobile  */
 
 @media only screen and (max-width: 767px) {
   .cart-container {
     background-color: rgba(8, 65, 84, 0.384);
   }
+
   #cart {
     top: 30px;
     right: 0;
@@ -355,10 +363,12 @@ input:focus {
     overflow-x:unset;
     max-width: 400px;
   }
+
   .close-btn {
     position: relative;
-    margin-left: 30px;
+    margin-left: 20px;
   }
 
 }
+
 </style>

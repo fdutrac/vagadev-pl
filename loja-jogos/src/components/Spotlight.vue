@@ -37,7 +37,7 @@ export default {
       bought: false
 
    }
-  }, 
+  },
   methods: {
     isBought() {
       if(this.bought === false) {
@@ -49,6 +49,7 @@ export default {
 }
 
 </script>
+
 <style scoped>
 p {
   color: #084154
@@ -116,6 +117,7 @@ p {
   max-width: 80%;
   height: auto;
 }
+
 .bought {
   background-color: #084154;
   justify-content: start;

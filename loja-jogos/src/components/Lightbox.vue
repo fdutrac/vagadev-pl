@@ -37,6 +37,7 @@ export default {
 }
 
 </script>
+
 <style scoped>
 .lightbox-background {
   position:fixed;
@@ -48,12 +49,14 @@ export default {
   width: 100vw;
   background: rgba(8, 65, 84, 0.62)
 }
+
 .lightbox-header {
   display: flex;
   height: 70px;
   padding: 15px;
   border-bottom: 1px solid #084154;
 }
+
 .lightbox-button {
   margin-left: auto;
   height: 50px;
@@ -77,6 +80,7 @@ export default {
   border-radius: 5px;
   justify-content: center;
 }
+
 .lightbox-body {
   display: flex;
   justify-content: center;
@@ -93,6 +97,5 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 
 </style>

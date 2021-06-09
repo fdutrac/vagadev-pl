@@ -88,10 +88,10 @@ export default {
     },
   },
 }
+
 </script>
 
 <style scoped>
-
 #header {
   background-color: rgba(0, 0, 0, 0);
   width: calc(100% - 20px);
@@ -240,18 +240,21 @@ ul .border {
   li span {
       display: none;
   }
+
   ul .border {
     border: none
   }
+
   #header {
-    justify-content:space-between; 
+    justify-content:space-between;
     width: 100%;
     padding: 0
   }
+
   .icon {
     margin-right: 0px;
   }
-  
+
   .solidBG {
     background-color: #084154!important;
   }
@@ -288,12 +291,15 @@ ul .border {
     color: #fff;
     font-size: 14px;
   }
+
   .dropdown-title {
     font-size: 16px;
     font-weight: bold;
   }
+
   .active {
     display:flex;
   }
 }
+
 </style>

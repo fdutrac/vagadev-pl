@@ -7,7 +7,7 @@
           <h2>{{ games.game1.value}}</h2>
           <p>{{ games.game1.description}}</p>
         </div>
-      </div> 
+      </div>
       <div v-if="!isActive" class="slider-content content-2">
         <div class="slider-description game-two">
           <h1>{{ games.game2.title}}</h1>
@@ -46,9 +46,9 @@ export default {
   name: 'Carousel',
   components: {  },
   data() {
-    return { 
+    return {
         isActive: true,
-        selectedItem: 
+        selectedItem:
         {
           title: 'MORTAL KOMBAT',
           order: '1',
@@ -59,13 +59,13 @@ export default {
             title: 'MORTAL KOMBAT',
             order: '1',
             value: 'R$299,99',
-            description: 'Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.' 
+            description: 'Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.'
           },
           game2: {
             title: 'RED DEAD REDEMPTION II',
             order: '2',
             value: 'R$249,99',
-            description: 'Em 1899, Red Dead Redemption 2 segue a história de Arthur Morgan, um membro da guangue de bandidos de Dutch Van der Linde. Com agentes federais e os melhores caçadores de recompensa em seu encalço, a gangue precisa roubar, assaltar e lutar para sobreviver no impiedoso coração dos Estados Unidos.' 
+            description: 'Em 1899, Red Dead Redemption 2 segue a história de Arthur Morgan, um membro da guangue de bandidos de Dutch Van der Linde. Com agentes federais e os melhores caçadores de recompensa em seu encalço, a gangue precisa roubar, assaltar e lutar para sobreviver no impiedoso coração dos Estados Unidos.'
           },
         }
       }
@@ -99,7 +99,6 @@ export default {
 h1, h2 {
   margin: 0
 }
-
 h1 {
   font-size: clamp(1.5rem, 3vw, 3rem);
 }
@@ -118,6 +117,7 @@ p {
 .slider-title {
   padding: 0px 10px
 }
+
 .slider-title hr {
   display: none;
 }
@@ -136,6 +136,7 @@ p {
 .slider-description h1, p {
   color: white;
 }
+
 .slider-description h2 {
   color: #3EC6E0;
 }
@@ -161,7 +162,7 @@ p {
   background-color: #084154;
 }
 
-.slider-buttons button { 
+.slider-buttons button {
   border: none;
   background-color: inherit;
 }
@@ -171,6 +172,7 @@ p {
   background-image: url('../assets/carousel/principal_banner_desktop 1.png');
   background-size:cover;
 }
+
 .content-2 {
   transition: 1s;
   background-image: url('../assets/carousel/principal_banner_desktop_02.png');
@@ -180,21 +182,17 @@ p {
 @media only screen and (max-width: 767px) {
   .content-1 {
     background-position: 20%;
-  } 
+  }
+
   .content-2 {
     background-position: 75%;
   }
 }
 @media only screen and (min-width: 768px) {
-  .slider-description{
-    position: absolute;
-    top: 20%;
-    max-width: 420px;
-    background-color: inherit
-  }
   .game-one {
     right: 20%;
   }
+
   .game-two {
     left: 10%;
     background-color: rgba(0,0,0,0.65);
@@ -202,8 +200,15 @@ p {
     max-height: 380px;
     bottom:auto
   }
-  
-  .slider-navigation { 
+
+  .slider-description{
+    position: absolute;
+    top: 20%;
+    max-width: 420px;
+    background-color: inherit
+  }
+
+  .slider-navigation {
     height: 50px;
     display:flex;
     position: absolute;
@@ -223,9 +228,11 @@ p {
     color: white;
     font-size: 14px;
   }
+
   .slider-buttons {
     width: auto
   }
+
   .slider-title {
     width: 200px;
     display: flex
@@ -234,6 +241,7 @@ p {
   .slider-button--container, .slider-counter {
     transform: rotate(-90deg);
   }
+
   .slider-title hr {
     width: 30%;
     align-self: center;
@@ -242,7 +250,7 @@ p {
     background-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
     height: 1px;
-  }   
+  }
 }
 
 

@@ -98,7 +98,6 @@ export default {
     },
     selector(index) {
       return this.selected === index ?  'selected' : 'notSelected';
-    
     },
     openLightbox() {
       this.isActive = true;
@@ -150,6 +149,7 @@ h3 {
   width:75%;
   align-items: center;
 }
+
 .title-container img {
   height: 100%;
   margin-right: 15px;
@@ -164,9 +164,11 @@ h3 {
   position: absolute;
   top: 50%
 }
+
 .spotlights-nav--left {
   left: 7%;
 }
+
 .spotlights-nav--right {
   right: 7%;
 }
@@ -231,9 +233,11 @@ h3 {
   .tips .title-container {
     flex-wrap: wrap;
   }
+
   .tips-container {
   width: 95%;
   }
+
   #categories {
     width:100%;
     margin-left: 0;
