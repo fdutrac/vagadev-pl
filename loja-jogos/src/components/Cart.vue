@@ -164,13 +164,15 @@ h1 {
 }
 
 button {
-  border: none
+  border: none;
+  cursor: pointer
 }
 
 input {
   padding: 0 5px;
   border: none;
   color: #084154;
+  cursor: pointer
 }
 
 .bagde {
@@ -231,6 +233,9 @@ input:focus {
   align-items: center;
   padding: 15px;
   box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.363);
+  overflow-y:scroll;
+  overflow-x:unset;
+  max-height: 600px;
 }
 
 .cart-header {
@@ -254,8 +259,6 @@ input:focus {
 }
 
 .close-btn {
-  position: absolute;
-  left: -28px;
   width: 25px;
   height: 25px;
   display: flex;
@@ -263,6 +266,11 @@ input:focus {
   justify-content: center;
   background-color: #F55959;
   border-radius: 50%
+}
+
+.close-btn:hover {
+  background-color: #9c3b3b;
+  cursor: pointer
 }
 
 .close-btn .icon {
@@ -359,16 +367,8 @@ input:focus {
     margin-right: auto;
     margin-left: auto;
     max-height: 87vh;
-    overflow-y:scroll;
-    overflow-x:unset;
     max-width: 400px;
   }
-
-  .close-btn {
-    position: relative;
-    margin-left: 20px;
-  }
-
 }
 
 </style>

@@ -201,6 +201,7 @@ ul .border {
 .icon:hover, li:hover {
   opacity: 0.7;
   transition: 0.2s;
+  cursor: pointer
 }
 
 .badge {

@@ -108,6 +108,9 @@ h2 {
 p {
   font-size: clamp(0.8rem, 2vw, 1rem);
 }
+button {
+  cursor: pointer;
+}
 
 .slider-content{
   position:relative;

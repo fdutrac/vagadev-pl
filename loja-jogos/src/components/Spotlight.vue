@@ -70,7 +70,8 @@ p {
   justify-content: center;
   align-items: center;
   font-weight: 900;
-  color: white
+  color: white;
+  cursor: pointer
 }
 
 .card-button:hover {
@@ -122,6 +123,7 @@ p {
   background-color: #084154;
   justify-content: start;
   padding-left: 20px;
+  cursor: unset;
 }
 
 .bought-img {

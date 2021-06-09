@@ -162,7 +162,8 @@ h3 {
 .spotlights-nav--left, .spotlights-nav--right {
   display: none;
   position: absolute;
-  top: 50%
+  top: 50%;
+  cursor: pointer;
 }
 
 .spotlights-nav--left {
@@ -180,6 +181,7 @@ h3 {
 
 .unclickable {
   filter: invert(50%)!important;
+  cursor: unset !important;
 }
 
 #categories {
@@ -189,6 +191,7 @@ h3 {
   border-color: #084154;
   font-size: 14px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .tips-container {
@@ -198,6 +201,7 @@ h3 {
   width:80%;
   margin: auto;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 1024px) {

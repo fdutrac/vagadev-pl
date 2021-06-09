@@ -2,7 +2,10 @@
   <div class="lightbox-background" :class="{active: isActive}" >
     <div class="lightbox-container">
       <div class="lightbox-header">
-        <img src="../assets/icons/close btn.png" class="lightbox-button" @click="closeLightbox" alt="">
+        <button class="lightbox-button" @click="closeLightbox">
+          <img class="icon" src="../assets/icons/close icon.png">
+        </button>
+        <!-- <img src="../assets/icons/close btn.png" class="lightbox-button" @click="closeLightbox" alt=""> -->
       </div>
       <p class="lightbox-title">
         Pedido realizado com sucesso!
@@ -58,9 +61,24 @@ export default {
 }
 
 .lightbox-button {
-  margin-left: auto;
-  height: 50px;
-  width: 50px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F55959;
+  border-radius: 50%;
+  border: none
+}
+
+.lightbox-button:hover {
+  background-color: #9c3b3b;
+  cursor: pointer
+}
+
+.lightbox-button .icon {
+  width: 12px;
+  height: 12px;
 }
 
 .lightbox-title {
