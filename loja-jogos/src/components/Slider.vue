@@ -80,6 +80,17 @@ export default {
         this.selectedItem = this.games.game2;
       }
     }
+  },
+  created() {
+    setInterval(() => {
+      if (this.isActive === false) {
+        this.isActive = true
+        this.selectedItem = this.games.game1;
+      } else if (this.isActive === true) {
+        this.isActive = false
+        this.selectedItem = this.games.game2; }
+      }, 5000
+    );
   }
 }
 
