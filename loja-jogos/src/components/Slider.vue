@@ -195,7 +195,7 @@ p {
 
   .game-two {
     left: 10%;
-    background-color: rgba(0,0,0,0.65);
+    background-color: rgba(0, 0, 0, 0.541)!important;
     border-radius: 10px;
     max-height: 380px;
     bottom:auto
